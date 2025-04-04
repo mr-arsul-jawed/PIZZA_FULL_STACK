@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../css/Cart.css";
-import { StoreContext } from "../context/StoreContext";
+import { StoreContext } from "../context/StoreContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
@@ -26,7 +26,7 @@ function Cart() {
             return (
               <div>
                 <div className="cart-items-title cart-items-item">
-                  <img src={url+"/images/"+item.image} alt="" />
+                  <img src={url+"/images/"+item.image} alt="image" />
                   <p>{item.name}</p>
                   <p>${item.price}</p>
                   <p>{CartItem[item._id]}</p>

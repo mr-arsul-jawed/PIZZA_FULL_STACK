@@ -1,6 +1,6 @@
 import React from 'react'
 import '../css/ExploreMenu.css'
-import { menu_list } from '../assets/assets'
+import { menu_list } from '../assets/assets.js'
 
 function ExploreMenu({category,setCategory}) {
 

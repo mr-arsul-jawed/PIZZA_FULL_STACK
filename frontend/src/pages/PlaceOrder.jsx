@@ -154,7 +154,7 @@ function PlaceOrder() {
             value={data.lastName}
             type="text"
             placeholder="Last name"
-          />
+          />  
         </div>
         <input
           required
