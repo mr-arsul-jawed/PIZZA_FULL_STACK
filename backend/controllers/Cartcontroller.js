@@ -11,7 +11,10 @@ const addToCart = async (req,res) =>{
        
          // Check if userData is null
         if (!userData) {
-            return res.status(404).json({ success: false, message: "User not found" });
+            return res.status(404).json({ 
+                success: false, 
+                message: "User not found" 
+            });
         }
 
         let cartData = await userData.cartData;
@@ -49,10 +52,16 @@ const removeFromCart = async (req,res) =>{
             cartData[req.body.itemId] -= 1;
         }
         await userModel.findByIdAndUpdate(req.body.userId,{cartData});
-        res.json({success:true,message:"Remove From Cart"})
+        res.json({
+            success:true,
+            message:"Remove From Cart"
+        })
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({
+            success:false,
+            message:"Error"
+        })
     }
 }
 
@@ -64,15 +73,23 @@ const getCart = async(req,res) =>{
 
         // Check if userData is null
         if (!userData) {
-            return res.status(404).json({ success: false, message: "User not found" });
+            return res.status(404).json({ 
+                success: false, 
+                message: "User not found" 
+            });
         }
 
         let cartData = await userData.cartData;
-        res.json({success:true,cartData})
+        res.json({
+            success:true,
+            cartData})
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"})
+        res.json({
+            success:false,
+            message:"Error"
+        })
     }
 }
 
-export {addToCart,removeFromCart,getCart};
+export {addToCart, removeFromCart, getCart};
