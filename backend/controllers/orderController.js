@@ -45,7 +45,10 @@ const placeOrder = async (req, res) => {
     });
   } catch (error) {
     console.error("Error placing the order:", error);
-    res.status(500).json({ success: false, message: "Error placing the order" });
+    res.status(500).json({ 
+      success: false, 
+      message: "Error placing the order" 
+    });
   }
 };
 
@@ -55,14 +58,23 @@ const verifyOrder = async (req, res) => {
   try {
     if (success === "true") {
       await orderModel.findByIdAndUpdate(orderId, { payment: true });
-      res.json({ success: true, message: "Payment successful. Order has been updated." });
+      res.json({ 
+        success: true, 
+        message: "Payment successful. Order has been updated."
+       });
     } else {
       await orderModel.findByIdAndDelete(orderId);
-      res.json({ success: false, message: "Payment failed. Order has been canceled." });
+      res.json({ 
+        success: false, message: 
+        "Payment failed. Order has been canceled."
+       });
     }
   } catch (error) {
     console.error("Error verifying payment:", error);
-    res.status(500).json({ success: false, message: "Error processing payment" });
+    res.status(500).json({ 
+      success: false, 
+      message: "Error processing payment" 
+    });
   }
 }
 
@@ -91,10 +103,16 @@ const userOrders = async (req,res)=> {
 const listOrders = async (req,res) => {
   try {
     const orders = await orderModel.find({});
-    res.json({success:true,data:orders})
+    res.json({
+      success:true,
+      data:orders
+    })
   } catch (error) {
     console.log(error);
-    res.json({success:false,message:"Error"})
+    res.json({
+      success:false,
+      message:"Error"
+    })
     
     
   }
@@ -115,7 +133,10 @@ const updateStatus = async (req,res) =>{
           })
     } catch (error) {
       console.log(error);
-      res.json({success:false,message:"Error"})
+      res.json({
+        success:false,
+        message:"Error"
+      })
       
       
     }
