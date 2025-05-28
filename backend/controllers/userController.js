@@ -1,7 +1,7 @@
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
-import validator from"validator"
+import validator from "validator"
 
 
 
@@ -25,7 +25,7 @@ const loginUser = async (req,res) =>{
             success:false,
             message:"Invalid credentials"
         })
-        }
+    }
 
 
         const token = createToken(user._id);
@@ -47,14 +47,18 @@ const loginUser = async (req,res) =>{
 
 //HERE : create a token using jsonwebtoken
 const createToken = (id) => {
-    return jwt.sign({id},process.env.JWT_SECRET)
+    return jwt.sign(
+        {
+            id
+        },
+        process.env.JWT_SECRET)
 }
 
 
 
 // register user
 const registerUser = async (req,res) =>{
-    const {name,password,email} = req.body;
+    const {name, password, email} = req.body;
     try {
         // checking is user already exists
         const exists = await userModel.findOne({email});

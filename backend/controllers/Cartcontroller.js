@@ -49,7 +49,10 @@ const removeFromCart = async (req,res) =>{
 
         // Check if userData is null
         if (!userData) {
-            return res.status(404).json({ success: false, message: "User not found" });
+            return res.status(404).json({ 
+                success: false, 
+                message: "User not found" 
+            });
         }
 
         let cartData = await userData.cartData;

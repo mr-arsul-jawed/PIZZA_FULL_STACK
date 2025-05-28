@@ -10,7 +10,7 @@ import orderRouter from './routes/orderRoute.js'
 
 //app config
 const app = express()
-const port = 4000
+const port = 3000 || process.env.PORT
 
 
 //middleware
@@ -20,7 +20,6 @@ app.use(cors())
 
 //db connection
 connectDB();
-
 
 //api endpoints
 app.use("/api/food",foodRouter)
@@ -34,7 +33,6 @@ app.use("/api/order",orderRouter)
 //api checking 
 app.get("/",(req,res)=>{
     res.send("API Working.....")
-
 })
 
 
