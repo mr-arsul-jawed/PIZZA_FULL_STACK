@@ -99,7 +99,9 @@ const registerUser = async (req,res) =>{
             email:email,
             password:hashedPassword
         })
+        
 
+       
         //here save the data in database
         const user =  await newUser.save()
 
